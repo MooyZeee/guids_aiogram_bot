@@ -1,0 +1,6 @@
+*
+.idea/
+.venv/
+.config/
+.this_bot/
+.gitignore

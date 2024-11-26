@@ -12,12 +12,10 @@ from handlers.handler import router
 from config.config import TOKEN
 
 
-bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
-dp = Dispatcher()
-
-dp.include_router(router)
-
 async def main():
+    bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
+    dp = Dispatcher()
+    dp.include_router(router)
     await bot.set_my_commands(commands=private, scope=BotCommandScopeAllPrivateChats())
     await bot(DeleteWebhook(drop_pending_updates=True))
     await dp.start_polling(bot, skip_updates=True)
